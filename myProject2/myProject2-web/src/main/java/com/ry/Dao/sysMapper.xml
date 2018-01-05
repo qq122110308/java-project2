@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ry.Dao.sysMapper" >
+  <resultMap id="BaseResultMap" type="com.ry.Entity.sys" >
+    <id column="sys_id" property="sysId" jdbcType="INTEGER" />
+    <result column="sys_name" property="sysName" jdbcType="VARCHAR" />
+    <result column="sys_type" property="sysType" jdbcType="INTEGER" />
+    <result column="sys_url" property="sysUrl" jdbcType="VARCHAR" />
+    <result column="sys_icon" property="sysIcon" jdbcType="VARCHAR" />
+    <result column="sys_last" property="sysLast" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sys_id, sys_name, sys_type, sys_url, sys_icon, sys_last
+  </sql>
+  <select id="selectAllSys" resultMap="BaseResultMap" >
+  	select
+  	<include refid="Base_Column_List" />
+  	from sys
+  </select>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys
+    where sys_id = #{sysId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys
+    where sys_id = #{sysId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ry.Entity.sys" >
+    insert into sys (sys_id, sys_name, sys_type, 
+      sys_url, sys_icon, sys_last
+      )
+    values (#{sysId,jdbcType=INTEGER}, #{sysName,jdbcType=VARCHAR}, #{sysType,jdbcType=INTEGER}, 
+      #{sysUrl,jdbcType=VARCHAR}, #{sysIcon,jdbcType=VARCHAR}, #{sysLast,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ry.Entity.sys" >
+    insert into sys
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sysId != null" >
+        sys_id,
+      </if>
+      <if test="sysName != null" >
+        sys_name,
+      </if>
+      <if test="sysType != null" >
+        sys_type,
+      </if>
+      <if test="sysUrl != null" >
+        sys_url,
+      </if>
+      <if test="sysIcon != null" >
+        sys_icon,
+      </if>
+      <if test="sysLast != null" >
+        sys_last,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sysId != null" >
+        #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="sysName != null" >
+        #{sysName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysType != null" >
+        #{sysType,jdbcType=INTEGER},
+      </if>
+      <if test="sysUrl != null" >
+        #{sysUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="sysIcon != null" >
+        #{sysIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="sysLast != null" >
+        #{sysLast,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ry.Entity.sys" >
+    update sys
+    <set >
+      <if test="sysName != null" >
+        sys_name = #{sysName,jdbcType=VARCHAR},
+      </if>
+      <if test="sysType != null" >
+        sys_type = #{sysType,jdbcType=INTEGER},
+      </if>
+      <if test="sysUrl != null" >
+        sys_url = #{sysUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="sysIcon != null" >
+        sys_icon = #{sysIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="sysLast != null" >
+        sys_last = #{sysLast,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sys_id = #{sysId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ry.Entity.sys" >
+    update sys
+    set sys_name = #{sysName,jdbcType=VARCHAR},
+      sys_type = #{sysType,jdbcType=INTEGER},
+      sys_url = #{sysUrl,jdbcType=VARCHAR},
+      sys_icon = #{sysIcon,jdbcType=VARCHAR},
+      sys_last = #{sysLast,jdbcType=VARCHAR}
+    where sys_id = #{sysId,jdbcType=INTEGER}
+  </update>
+</mapper>
