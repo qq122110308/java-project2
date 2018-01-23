@@ -37,6 +37,7 @@
 	
 	
 <script src="/layui.js"></script>
+<script src="/lay/modules/form.js"></script>
 <script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-primary layui-btn-xs "   lay-event="detail">查看</a>
   <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -98,28 +99,22 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
 		setTop: function(){
 		      var that = this; 
 		      //多窗口模式，层叠置顶
-		      layer.open({
-		        type: 2 //此处以iframe举例
-		        ,title: ''
-		        ,area: ['800px', '600px']
-		        ,shade: 0
-		        ,maxmin: true
-		        ,content: '/role/roleAdd'
-		        ,btn: ['确认', '关闭'] //只是为了演示
-		        ,yes: function(){
-		        	roleAddCommint();
-		          	//继续弹出的点击事件
-		        	//$(that).click(); 
-		        }
-		        ,btn2: function(){
-		        	layer.closeAll();
-		        }
-		        
-		        ,zIndex: layer.zIndex //重点1
-		        ,success: function(layero){
-		          layer.setTop(layero); //重点2
-		        }
-		      });
+		      //Ajax获取
+		      $.ajax({
+		    	type:"POST",
+		    	data:{},
+		    	async:true,
+		    	url:"/role/roleAdd",
+		    	success:function(str){
+		    		layer.open({
+			    		type:1
+			    		,content:str//注意str是object，那么需要字符拼接
+			    		,area: ['80%', '80%']
+			    	  	,btn: ['确认', '关闭'] //只是为了演示
+			    	  })
+		    	}	
+		      })
+		      
 		    }		
 	}
 	

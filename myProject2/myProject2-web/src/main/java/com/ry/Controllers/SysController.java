@@ -80,9 +80,16 @@ public class SysController {
 		}
 	}
 	
+	
+	/**
+	 * 用于zTree树的显示，这个是数据  但我用ajax请求好像是同步jax 成功后 success函数不会调用
+	 * @return
+	 */
 	@RequestMapping(value="/getSysZtree",produces = "application/json; charset=utf-8")
-	@ResponseBody
-	public String getSysZtree(){
+	public void getSysZtree(HttpServletResponse response){
+		response.setContentType("application/json;charset=utf-8");
+		HashMap map = new HashMap<>();
+		
 		//预读取数据  读取系统的所有功能
 		List<sys> sysList = sysService.selectAllSys();
 		StringBuffer sb = new StringBuffer();
@@ -102,8 +109,20 @@ public class SysController {
 				}
 			}
 		}
+//		map.put("zTree", "["+sb.toString()+"]");
+//		JSONObject jsonObj = JSONObject.fromObject(map);
+		String result = "["+sb.toString()+"]";
+		PrintWriter pw;
+		System.out.println("result : "+result);
+		try {
+			pw = response.getWriter();
+			pw.write(result);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		return "["+sb.toString()+"]";
+		//return "["+sb.toString()+"]";
 	}
 	
 }

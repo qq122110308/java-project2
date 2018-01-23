@@ -42,7 +42,11 @@ public class UserController {
 	@Autowired
 	SysSerivce sysService;
 	
-	//跳转到登录界面
+	/**
+	 * 跳转到登录界面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/login")
 	public String gologin(HttpServletRequest request){
 		String message = request.getParameter("message");

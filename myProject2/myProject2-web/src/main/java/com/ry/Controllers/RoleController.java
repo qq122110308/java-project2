@@ -43,7 +43,12 @@ public class RoleController {
 		return "role/roleIndex";
 	}
 	
-	
+	/**
+	 * 读取角色数据列表
+	 * @param response
+	 * @param page
+	 * @param limit
+	 */
 	@RequestMapping("/roleIndex")
 	public void roleIndex(HttpServletResponse response, Integer page, Integer limit){
 		if(page == null ){
