@@ -25,32 +25,32 @@ public class RoleServiceImpl implements RoleService {
 	
 	@Override
 	public int deleteByPrimaryKey(Integer roleId) {
-		return 0;
+		return roleMapper.deleteByPrimaryKey(roleId);
 	}
 
 	@Override
 	public int insert(Role record) {
-		return 0;
+		return roleMapper.insert(record);
 	}
 
 	@Override
 	public int insertSelective(Role record) {
-		return 0;
+		return roleMapper.insertSelective(record);
 	}
 
 	@Override
 	public Role selectByPrimaryKey(Integer roleId) {
-		return null;
+		return roleMapper.selectByPrimaryKey(roleId);
 	}
 
 	@Override
 	public int updateByPrimaryKeySelective(Role record) {
-		return 0;
+		return roleMapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
 	public int updateByPrimaryKey(Role record) {
-		return 0;
+		return roleMapper.updateByPrimaryKey(record);
 	}
 
 	@Override

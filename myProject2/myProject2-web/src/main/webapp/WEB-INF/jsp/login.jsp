@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="/css/layui.css"  media="all">
 </head>
 <body>
+	<div  style="margin:10% 20%;">
 	<center>
 		<form class="layui-form" action="/user/islogin"  method="post" >
 			<div class="layui-form-item">
@@ -42,7 +43,7 @@
 		
 		</form>
 	</center>
-	
+	</div>
 	<c:if test="${message ne null }">
      	<div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;style:none;">
      	<!-- 这个按钮千万不要加data-type="auto"  -->

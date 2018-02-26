@@ -13,7 +13,7 @@
 <body class="layui-layout-body">
 	<div id="box" class="layui-layout layui-layout-admin">	
 	<div class="layui-header">
-		<div class="layui-logo">学生成绩系统后台管理</div>
+		<div class="layui-logo">系统后台管理</div>
 		<!-- 头部区域（可配合layui已有的水平导航） -->
 		<ul class="layui-nav layui-layout-left" style="display:none;">
 	      <li class="layui-nav-item"><a href="">控制台</a></li>
@@ -105,11 +105,11 @@ layui.use('element', function(){
     tabAdd: function(){
       //在这里先判断您是否已经存在该选项	
 	  var titleName = $(this).text().trim();  
-      console.log("titleName" + titleName);
+      //console.log("titleName" + titleName);
       var isContinue = true;
       
       $(".layui-tab-title li").each(function(){
-    	 console.log($(this).text()); 
+    	 //console.log($(this).text()); 
 		 if($(this).text().indexOf(titleName) > -1){
 			 isContinue = false;
 			 //并对该事件进行点击
@@ -128,6 +128,8 @@ layui.use('element', function(){
         })
     	  
       }
+      
+      element.tabChange('demo', $(this).attr("url") );
       
     }
     ,tabDelete: function(othis){
@@ -148,7 +150,7 @@ layui.use('element', function(){
   
   //Hash地址的定位
   var layid = location.hash.replace(/^#test=/, '');
-  console.log("layid:"+layid);
+  //console.log("layid:"+layid);
   element.tabChange('test', layid);
   
   element.on('tab(test)', function(elem){
@@ -219,7 +221,7 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
         	
           var btn = layero.find('.layui-layer-btn');
           btn.find('.layui-layer-btn0').attr({
-            href: 'javascript:goOutLogin();'
+            onclick: 'goOutLogin();'
           }); 
         }
       });
@@ -248,12 +250,7 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
     active[method] ? active[method].call(this, othis) : '';
   });
   
-});
-
-
-</script>
-<script type="text/javascript" src="/jquery.js"></script>
-<script type="text/javascript">
+  
 //退出登录
  function goOutLogin(){
 	$.ajax({
@@ -265,6 +262,14 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
 		}
 	});		  
  }	
+  
+});
+
+
+</script>
+<script type="text/javascript" src="/jquery.js"></script>
+<script type="text/javascript">
+
 </script>
 
 </body>

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +17,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ry.PageInfo;
+import com.ry.Dto.Message;
 import com.ry.Entity.User;
 import com.ry.Entity.sys;
 import com.ry.Service.SysSerivce;
@@ -130,5 +134,88 @@ public class UserController {
 		return "redirect:/user/login";
 	}
 	
+	/**
+	 * 跳转添加用户页面
+	 * @author ry
+	 * @return
+	 */
+	@RequestMapping(value="UserAdd",method=RequestMethod.GET)
+	public ModelAndView gotoAdd(){
+		return new ModelAndView("user/userAdd",null);
+	}
+	
+	/**
+	 * 添加用户
+	 * @author ry
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value="userAddData",method=RequestMethod.POST)
+	@ResponseBody
+	public Message userAddData(User user){
+		int flag = 0;
+		flag = userService.insertSelective(user);
+		
+		if(flag > 0){
+			return new Message(1, "操作成功");
+		}
+		else{
+			return new Message(0, "操作失败");
+		}
+	}
+	
+	/**
+	 * 跳转至用户详情界面
+	 * @author ry
+	 * @return
+	 */
+	@RequestMapping(value="userDetail",method=RequestMethod.GET)
+	public ModelAndView userDetail(int userId){
+		User user =userService.selectByPrimaryKey(userId);
+		Map<String, Object> model = new HashMap<>();
+		model.put("user", user);
+		return new ModelAndView("user/userDetail",model);
+		
+	}
+	
+	/**
+	 * 修改用户操作
+	 * @author ry
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping(value="userUpdate",method=RequestMethod.POST)
+	@ResponseBody
+	public Message userUpdate(User user){
+		int flag = 0;
+		flag = userService.updateByPrimaryKeySelective(user);
+		if(flag > 0){
+			return new Message(1, "操作成功");
+		}
+		else{
+			return new Message(0,"操作失败");
+		}
+		
+	}
+	
+	/**
+	 * 删除用户
+	 * @author ry
+	 * @param userId
+	 * @return
+	 */
+	@RequestMapping(value="deleteUser",method=RequestMethod.POST)
+	@ResponseBody
+	public Message deleteUser(int userId){
+		int flag = 0;
+		flag = userService.deleteByPrimaryKey(userId);
+		
+		if(flag > 0){
+			return new Message(1, "操作成功");
+		}
+		else{
+			return new Message(0,"操作失败");
+		}
+	}
 }
  

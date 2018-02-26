@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ry.PageInfo;
+import com.ry.Entity.Role;
 import com.ry.Entity.sys;
 import com.ry.Service.SysSerivce;
 
@@ -81,15 +83,16 @@ public class SysController {
 	}
 	
 	
+	
 	/**
 	 * 用于zTree树的显示，这个是数据  但我用ajax请求好像是同步jax 成功后 success函数不会调用
 	 * @return
+	 * describe  这么写有问题 json格式错误的
 	 */
-	@RequestMapping(value="/getSysZtree",produces = "application/json; charset=utf-8")
+/*	@RequestMapping(value="/getSysZtree",produces = "application/json; charset=utf-8")
 	public void getSysZtree(HttpServletResponse response){
 		response.setContentType("application/json;charset=utf-8");
 		HashMap map = new HashMap<>();
-		
 		//预读取数据  读取系统的所有功能
 		List<sys> sysList = sysService.selectAllSys();
 		StringBuffer sb = new StringBuffer();
@@ -97,7 +100,12 @@ public class SysController {
 		for (sys sys1 : sysList) {
 			//判断是否为父级，这里只给到了二级菜单
 			if(sys1.getSysLast().equals("0")){
-				sb.append("{ \"id\":\""+sys1.getSysId()+"\", \"pId\":\""+sys1.getSysLast()+"\", \"name\":\""+sys1.getSysName()+"\"}");
+				if(sb.toString().equals("")){
+					sb.append("{ \"id\":\""+sys1.getSysId()+"\", \"pId\":\""+sys1.getSysLast()+"\", \"name\":\""+sys1.getSysName()+"\"}");
+				}
+				else{
+					sb.append(",{ \"id\":\""+sys1.getSysId()+"\", \"pId\":\""+sys1.getSysLast()+"\", \"name\":\""+sys1.getSysName()+"\"}");
+				}
 			}
 			else{
 				sb.append(",{ \"id\":\""+sys1.getSysId()+"\", \"pId\":\""+sys1.getSysLast()+"\", \"name\":\""+sys1.getSysName()+"\"}");
@@ -109,21 +117,22 @@ public class SysController {
 				}
 			}
 		}
-//		map.put("zTree", "["+sb.toString()+"]");
-//		JSONObject jsonObj = JSONObject.fromObject(map);
-		String result = "["+sb.toString()+"]";
+		map.put("zTree", "["+sb.toString()+"]");
+		JSONObject jsonObj = JSONObject.fromObject(map);
+		String result = jsonObj.toString();
 		PrintWriter pw;
-		System.out.println("result : "+result);
 		try {
 			pw = response.getWriter();
 			pw.write(result);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		//return "["+sb.toString()+"]";
-	}
+	}*/
+
+	
+
+	
 	
 }
  

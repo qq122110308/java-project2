@@ -24,32 +24,32 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public int deleteByPrimaryKey(Integer userId) {
-		return 0;
+		return userMapper.deleteByPrimaryKey(userId);
 	}
 
 	@Override
 	public int insert(User record) {
-		return 0;
+		return userMapper.insert(record);
 	}
 
 	@Override
 	public int insertSelective(User record) {
-		return 0;
+		return userMapper.insertSelective(record);
 	}
 
 	@Override
 	public User selectByPrimaryKey(Integer userId) {
-		return null;
+		return userMapper.selectByPrimaryKey(userId);
 	}
 
 	@Override
 	public int updateByPrimaryKeySelective(User record) {
-		return 0;
+		return userMapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override
 	public int updateByPrimaryKey(User record) {
-		return 0;
+		return userMapper.updateByPrimaryKey(record);
 	}
 
 	@Override
