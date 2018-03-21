@@ -8,18 +8,27 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>com.ry</groupId>
-  <artifactId>myProject-mapper</artifactId>
+  <artifactId>myProject2-mapper</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>myProject-mapper Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+    
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    
+    
+    <dependency>
+    	<groupId>com.ry</groupId>
+  		<artifactId>myProject2-pojo</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    
   </dependencies>
   <build>
     <finalName>myProject-mapper</finalName>

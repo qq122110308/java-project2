@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ry.PageInfo;
-import com.ry.Entity.Role;
-import com.ry.Entity.sys;
-import com.ry.Service.SysSerivce;
+import com.ry.entity.Role;
+import com.ry.entity.sys;
+import com.ry.service.SysSerivce;
 
 import net.sf.json.JSONObject;
 

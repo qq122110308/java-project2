@@ -23,12 +23,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ry.PageInfo;
-import com.ry.Commons.NowTime;
-import com.ry.Dto.Message;
-import com.ry.Entity.Role;
-import com.ry.Entity.sys;
-import com.ry.Service.RoleService;
-import com.ry.Service.SysSerivce;
+import com.ry.common.Message;
+import com.ry.common.NowTime;
+import com.ry.entity.Role;
+import com.ry.entity.sys;
+import com.ry.service.RoleService;
+import com.ry.service.SysSerivce;
 
 import net.sf.json.JSONObject;
 

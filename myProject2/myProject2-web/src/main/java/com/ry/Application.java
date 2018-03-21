@@ -1,5 +1,7 @@
 package com.ry;
 
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Properties;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -12,7 +14,6 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
 import com.github.pagehelper.PageHelper;
-import com.ry.Servlet.MyServlet;
 
 /** 
 * @author ry 
@@ -22,7 +23,7 @@ import com.ry.Servlet.MyServlet;
 //运行Application， 数据库test 访问地址http://localhost:8080/user/login  登录用户名 13545152390 密码123456
 @SpringBootApplication
 @ServletComponentScan  //这里还可以用注解注册Servlet示例代码 不过要在Application所在包下 方法为：添加注解@ServletComponentScan
-@MapperScan("com.ry.Dao")
+@MapperScan("com.ry.dao")
 public class Application {
 	
 	//这里还可以用注解注册Servlet示例代码 不过要在Application所在包下 方法为：添加注解@ServletComponentScan

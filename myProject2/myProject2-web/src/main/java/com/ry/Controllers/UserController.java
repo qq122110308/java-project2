@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ry.PageInfo;
-import com.ry.Dto.Message;
-import com.ry.Entity.User;
-import com.ry.Entity.sys;
-import com.ry.Service.SysSerivce;
-import com.ry.Service.UserService;
+import com.ry.common.Message;
+import com.ry.entity.User;
+import com.ry.entity.sys;
+import com.ry.service.SysSerivce;
+import com.ry.service.UserService;
 
 import net.sf.json.JSONObject;
 
